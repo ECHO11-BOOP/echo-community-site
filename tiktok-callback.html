@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="referrer" content="no-referrer">
+  <meta name="theme-color" content="#080610">
+  <title>Conexão TikTok | ECHO COMMUNITY</title>
+  <script>
+    // A página é apenas uma reserva de callback. Não armazena ou envia códigos.
+    window.echoTikTokReturnStatus = new URLSearchParams(location.search).has('code') ? 'code'
+      : new URLSearchParams(location.search).has('error') ? 'error' : 'none';
+    if (location.search || location.hash) history.replaceState(null, '', location.pathname);
+  </script>
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/styles.css">
+  <style>
+    .echo-auth { min-height: 80vh; display:grid; place-items:center; padding:3rem 1rem; background:radial-gradient(circle at 50% 15%,rgba(139,78,219,.22),transparent 50%),#080610; color:#f7f3ff; font-family:system-ui,Arial,sans-serif }
+    .echo-auth-card { width:min(100%,620px); padding:clamp(1.5rem,5vw,3rem); border:1px solid #564071; border-radius:24px; background:#13101e; box-shadow:0 20px 80px #0006; text-align:center; }
+    .echo-auth-card img {width:72px; height:72px; margin-bottom:1rem}
+    .echo-auth h1 {font-size:clamp(1.5rem,4vw,2.1rem); line-height:1.25; margin:0 0 1rem}
+    .echo-auth p {color:#c8bfd6; line-height:1.75}
+    .echo-auth a {color:#d8adff}
+    .echo-auth .notice {padding:1rem; margin:1.4rem 0; border-radius:12px; background:#241a35; text-align:left; font-size:.95rem}
+    .echo-auth small{color:#9487a7}
+  </style>
+</head>
+<body>
+  <main class="echo-auth">
+    <section class="echo-auth-card" aria-labelledby="title">
+      <a href="index.html" aria-label="Página inicial da ECHO"><img src="assets/logo.svg" alt="ECHO COMMUNITY"></a>
+      <h1 id="title">Conexão com o TikTok</h1>
+      <p id="status">Esta é a página oficial de retorno de autorização da ECHO COMMUNITY.</p>
+      <div class="notice" role="status">
+        A integração está em configuração. Para concluir a conexão da conta e consultar vídeos,
+        a ECHO ainda precisa de um servidor seguro para validar a autorização e armazenar tokens.
+        Esta página não processa códigos nem conecta contas sozinha.
+      </div>
+      <p><a href="index.html">Voltar ao site da ECHO</a> · <a href="suporte.html">Suporte</a></p>
+      <small>Não envie códigos de autorização, tokens ou senhas por mensagens.</small>
+    </section>
+  </main>
+  <script>
+    if (window.echoTikTokReturnStatus === 'code')
+      document.getElementById('status').textContent = 'O TikTok retornou uma autorização, mas a conexão não foi finalizada: o servidor de autenticação ainda precisa ser configurado.';
+    else if (window.echoTikTokReturnStatus === 'error')
+      document.getElementById('status').textContent = 'A autorização no TikTok não foi concluída. Você pode voltar ao site da ECHO.';
+  </script>
+</body>
+</html>
